@@ -20,7 +20,7 @@ import com.example.fakecom.schema.ProductSchema;
 public interface  ProductMappers {
 
 // simple schema to DTO changing from the mappers
-
+    @BeanMapping(ignoreByDefault=true)
     @Mapping(source="name",target="productName")
     @Mapping(source="description",target="productDescription" )
     @Mapping(source="rating",target="productRating" )
@@ -39,31 +39,32 @@ public interface  ProductMappers {
     // @Mapping(target="rating",source="productRating" )
     // @Mapping(target="image",source="productImageDatabaseURL")
     // @Mapping(target="price" ,source="productPrice")
+   
     ProductSchema productDtoToSchema(DetailProductRequest data);
 
-
+    @BeanMapping(ignoreByDefault=true)
     @Mapping(source="name",target="addedProductName")
     @Mapping(source="price",target="addedProductPrice")
     @Mapping(source="description",target="addedProductDescription" )
     @Mapping(source="rating",target="addedProductRating" )
     @Mapping(source="image",target="addedProductImageDatabaseURL")
- 
     DetailProductResponse productSchemaToResponse(ProductSchema data);
     
     @InheritInverseConfiguration(name="productSchemaToResponse")
     ProductSchema productResponseToproductSchema(DetailProductResponse data);
 
 
-    @BeanMapping(nullValuePropertyMappingStrategy= NullValuePropertyMappingStrategy.IGNORE)
+    @BeanMapping(nullValuePropertyMappingStrategy= NullValuePropertyMappingStrategy.IGNORE,ignoreByDefault=true)// fpr tehe parttial updaatses
     @Mapping(target="name",source="productName")
     @Mapping(target="description",source="productDescription" , defaultValue="None")
     @Mapping(target="rating",source="productRating" )
     @Mapping(target="image",source="productImageDatabaseURL")
     @Mapping(target="price" ,source="productPrice")
-    @Mapping(target="id",ignore=true)
-    @Mapping(target="createdAt",ignore=true)
-    @Mapping(target="updatedAt",ignore=true)
-    @Mapping(target="deleteAt",ignore=true) /// need to add it inot the global congiguratoion because if any other entity is haveing that it should automaotically added up
+    // @Mapping(target="id",ignore=true)
+    // @Mapping(target="createdAt",ignore=true)
+    // @Mapping(target="updatedAt",ignore=true)
+    // @Mapping(target="deleteAt",ignore=true) /// need to add it inot the global congiguratoion because if any other entity is haveing that it should automaotically added up
+    // @Mapping(target="category",ignore=true)
     void ProductSchemaUpdateFromDTO(DetailProductRequest data, @MappingTarget ProductSchema enity );
 
      

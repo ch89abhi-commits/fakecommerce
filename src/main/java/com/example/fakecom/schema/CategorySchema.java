@@ -6,6 +6,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -16,9 +17,10 @@ import lombok.ToString;
 @Entity
 @Table(name="Categories")
 @ToString(callSuper=true)
+@EqualsAndHashCode(callSuper=false)
 public class CategorySchema extends  BaseEntity {
 
-   @ToString.Include
+  
    @Column(nullable=false)
     private String name;
 

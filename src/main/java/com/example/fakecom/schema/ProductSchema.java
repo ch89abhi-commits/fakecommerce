@@ -36,7 +36,7 @@ public class ProductSchema extends  BaseEntity{
     @ToString.Include
     private String description;
     
-    @Column(nullable=false)
+    @Column(nullable=false) 
     @ToString.Include
     private Float price;  
 
