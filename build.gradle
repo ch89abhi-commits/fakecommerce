@@ -24,13 +24,36 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-flyway'
-	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
-	implementation 'org.flywaydb:flyway-mysql'
+
+	// for the database connection
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // for the connection of the jpa to the hibernation to the jdbc
+	implementation 'org.springframework.boot:spring-boot-starter-flyway' // for handling the migration scripts
+	runtimeOnly 'com.mysql:mysql-connector-j' // data base driver
+	implementation 'org.flywaydb:flyway-mysql' // for the migration script data driver 
+
 	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'  // for the lombok reated wrok
+
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0' // mapstruct and the lombok bindings;
+
+	implementation 'org.mapstruct:mapstruct:1.6.3' // implementation of the map struct library
+    
+    // Annotation processor for generating mapper implementations
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.6.3'
+ 
+
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.mysql:mysql-connector-j'
-	annotationProcessor 'org.projectlombok:lombok'
+	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+
+
+// for the property utils
+
+implementation 'commons-beanutils:commons-beanutils:1.9.4'
+
+
+
+	 
+	
 	testImplementation 'org.springframework.boot:spring-boot-starter-flyway-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
