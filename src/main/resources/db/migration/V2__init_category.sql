@@ -10,5 +10,5 @@ CREATE TABLE  IF NOT EXISTS Categories(
 );
 --  categories table created then now
 
-ALTER TABLE Products CONSTRAINT fk_prod_cat FOREIGN KEY (category_id) REFERENCES Categories(id);
+ALTER TABLE Products ADD CONSTRAINT fk_prod_cat FOREIGN KEY (category_id) REFERENCES Categories(id);
 -- add the name constraint is to futher drop the ofeirng ley constrait;
