@@ -4,15 +4,18 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.fakecom.DTOs.RequestDTOs.CompleteProductRequest;
 import com.example.fakecom.DTOs.RequestDTOs.DetailProductRequest;
 import com.example.fakecom.DTOs.ResponseDTOs.DetailProductResponse;
 import com.example.fakecom.Exceptions.NoUserExistException;
+import com.example.fakecom.ObjectMappers.CompleteMapper;
 import com.example.fakecom.ObjectMappers.ProductMappers;
 import com.example.fakecom.repositories.ProductRepository;
 import com.example.fakecom.schema.ProductSchema;
 import com.example.fakecom.services.ProductServices.V1_Service.ReadService;
 import com.example.fakecom.services.ProductServices.V1_Service.WriteServices;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 
@@ -23,7 +26,8 @@ import lombok.RequiredArgsConstructor;
 public class ProductService implements ReadService ,WriteServices {
 
     private final ProductRepository productRepository; // injected by the spring ioc container during the component scan
-    private final ProductMappers productMapper;
+    private final ProductMappers productMapper; // make sure that the this field should not be changed based on the different threads
+    private final CompleteMapper completeMapper;
 
 
     @Override
@@ -51,6 +55,17 @@ public class ProductService implements ReadService ,WriteServices {
 
 
 
+    }
+
+    @Override
+    @Transactional
+    public String createCompleteProduct(CompleteProductRequest data){
+
+        System.err.println("Enterred");
+        productRepository.save(completeMapper.ProductDTO(data));
+        System.err.println("Exit");
+
+return "ok";
     }
 
 

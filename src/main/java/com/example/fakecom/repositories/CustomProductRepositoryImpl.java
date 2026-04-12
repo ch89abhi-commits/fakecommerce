@@ -11,7 +11,7 @@ import jakarta.persistence.PersistenceContext;
 public class CustomProductRepositoryImpl  implements  CustomProductRepository{
 
     @PersistenceContext
-    private EntityManager entityManager;
+    private EntityManager entityManager; ///it is created form the entity manger factorl
 
     @Override
     public ProductSchema findId(Long id){

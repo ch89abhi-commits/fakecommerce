@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.fakecom.DTOs.RequestDTOs.CompleteProductRequest;
 import com.example.fakecom.DTOs.RequestDTOs.DetailProductRequest;
 import com.example.fakecom.DTOs.ResponseDTOs.DetailProductResponse;
 import com.example.fakecom.Utility.ClientResponse;
@@ -76,7 +76,7 @@ public class ProductControllerImpl implements ReadProducts, WriteProducts  {
 
 
 @Override
-public ResponseEntity<ClientResponse<Object>> deleteProduct(@PathVariable(value="id" ) Long id){
+public ResponseEntity<ClientResponse<Object>> deleteProduct(Long id){
     return         ResponseEntity.status(HttpStatus.ACCEPTED).body(
                                             ClientResponse
                                                 .SuccessResponse(HttpStatus.ACCEPTED.value(), productservice.deleteProductEntity(id))) ;
@@ -85,7 +85,18 @@ public ResponseEntity<ClientResponse<Object>> deleteProduct(@PathVariable(value=
 
 
    
+@Override
+public ResponseEntity<ClientResponse<Object>> addcompleteProduct( CompleteProductRequest data){
 
+
+    return ResponseEntity.status(HttpStatus.ACCEPTED).body(
+                    ClientResponse.SuccessResponse(HttpStatus.ACCEPTED.value(),
+                        productservice.createCompleteProduct(data)        
+                )
+    );
+
+
+}
 
      
     

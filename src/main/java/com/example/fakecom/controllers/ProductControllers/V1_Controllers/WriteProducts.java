@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.fakecom.DTOs.RequestDTOs.CompleteProductRequest;
 import com.example.fakecom.DTOs.RequestDTOs.DetailProductRequest;
 import com.example.fakecom.DTOs.ResponseDTOs.DetailProductResponse;
 import com.example.fakecom.Utility.ClientResponse;
@@ -20,6 +21,10 @@ public interface WriteProducts {
 
     @PostMapping("/add")
     public ResponseEntity<ClientResponse<DetailProductResponse>>  addNewProduct(@RequestBody DetailProductRequest data);
+ 
+
+    @PostMapping("/complete")
+    public ResponseEntity<ClientResponse<Object>> addcompleteProduct(@RequestBody CompleteProductRequest data);
 
 
 
@@ -34,6 +39,8 @@ public interface WriteProducts {
  
      @DeleteMapping("/{id}")
     public ResponseEntity<ClientResponse<Object>> deleteProduct(@PathVariable(value="id") Long id);
+
+
 
 
 

@@ -16,12 +16,13 @@ import lombok.ToString;
 @Builder
 @Entity
 @Table(name="Categories")
-@ToString(callSuper=true)
+@ToString(callSuper=true,onlyExplicitlyIncluded=true)
 @EqualsAndHashCode(callSuper=false)
 public class CategorySchema extends  BaseEntity {
 
   
    @Column(nullable=false)
+   @ToString.Include
     private String name;
 
     
