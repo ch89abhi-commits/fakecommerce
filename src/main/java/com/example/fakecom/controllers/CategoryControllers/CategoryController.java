@@ -53,5 +53,12 @@ public class CategoryController implements ReadContoller,WriteCategory{
 
    }
 
+      @Override
+   public ResponseEntity<ClientResponse<Object>> deletingCategory(Long id){
+      return ResponseEntity.status(HttpStatus.ACCEPTED).body(ClientResponse.SuccessResponse(HttpStatus.ACCEPTED.value(), 
+               categoryService.categoryDelete(id)
+            ));
+   }
+
     
 }

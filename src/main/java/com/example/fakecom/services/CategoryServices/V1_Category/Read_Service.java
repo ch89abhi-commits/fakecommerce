@@ -19,5 +19,7 @@ public interface Read_Service {
 
     public CategoryRequest addingCategory(CategoryRequest data);
 
+    public CategorySchema categoryDelete(Long id);
+
     
 }

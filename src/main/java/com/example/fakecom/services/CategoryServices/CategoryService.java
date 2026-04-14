@@ -51,5 +51,13 @@ public class CategoryService implements Read_Service {
         )   ;
     }
 
+    @Override
+    public CategorySchema categoryDelete(Long id){
+        CategorySchema ct= categoryRepository.findById(id).orElseThrow();
+        categoryRepository.delete(ct);
+        return ct;
+
+    }
+
 
 }

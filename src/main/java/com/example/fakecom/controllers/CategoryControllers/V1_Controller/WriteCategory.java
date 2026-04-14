@@ -1,6 +1,8 @@
 package com.example.fakecom.controllers.CategoryControllers.V1_Controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,9 @@ public interface WriteCategory {
     
       @PostMapping("/add")
     public ResponseEntity<ClientResponse<Object>> addingCategory(@RequestBody CategoryRequest data);
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ClientResponse<Object>> deletingCategory(@PathVariable(value="id") Long id);
 
     
 }
