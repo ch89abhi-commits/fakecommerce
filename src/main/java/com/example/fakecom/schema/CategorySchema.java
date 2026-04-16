@@ -16,7 +16,7 @@ import lombok.ToString;
 @Builder
 @Entity
 @Table(name="Categories")
-@ToString(callSuper=true,onlyExplicitlyIncluded=true)
+@ToString(callSuper=true,onlyExplicitlyIncluded=false)
 @EqualsAndHashCode(callSuper=false)
 public class CategorySchema extends  BaseEntity {
 

@@ -98,6 +98,22 @@ public ResponseEntity<ClientResponse<Object>> addcompleteProduct( CompleteProduc
 
 }
 
+@Override
+public ResponseEntity<ClientResponse<Object>> searchByCategory( String category) throws Exception{
+    return ResponseEntity.status(HttpStatus.ACCEPTED).body(ClientResponse.SuccessResponse(HttpStatus.ACCEPTED.value(),
+    productservice.categorySearch(category)        
+));
+
+}
+
+
+@Override
+public ResponseEntity<ClientResponse<Object>> categories(){
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(ClientResponse.SuccessResponse(HttpStatus.ACCEPTED.value(),
+        productservice.allCategories()
+    ));
+}
+
      
     
     
