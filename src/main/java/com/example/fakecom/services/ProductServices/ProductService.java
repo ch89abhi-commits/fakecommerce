@@ -2,7 +2,6 @@ package com.example.fakecom.services.ProductServices;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -14,7 +13,6 @@ import com.example.fakecom.ObjectMappers.CompleteMapper;
 import com.example.fakecom.ObjectMappers.ProductMappers;
 import com.example.fakecom.repositories.CategoryRepository;
 import com.example.fakecom.repositories.ProductRepository;
-import com.example.fakecom.schema.CategorySchema;
 import com.example.fakecom.schema.ProductSchema;
 import com.example.fakecom.services.ProductServices.V1_Service.ReadService;
 import com.example.fakecom.services.ProductServices.V1_Service.WriteServices;
@@ -114,17 +112,19 @@ return "ok";
     public List<ProductSchema> categorySearch(String category){
 // search on the product such that their cateoruf
      
-       Optional<CategorySchema> c =categoryRepository.findByName(category);
-// here error handleing is required
-    if(c.isPresent()){
+//        Optional<CategorySchema> c =categoryRepository.findByName(category);
+// // here error handleing is required
+//     if(c.isPresent()){
 
-        return productRepository.findByCategory_id(c.get().getId());
+//         return productRepository.findByCategory_id(c.get().getId());
 
-    }
-    else{
-        throw  new NoUserExistException("no category name exits");
-    }
+//     }
+//     else{
+//         throw  new NoUserExistException("no category name exits");
+//     }
 
+
+    return productRepository.findCategoryBasedProduct(category);
 
     }
         

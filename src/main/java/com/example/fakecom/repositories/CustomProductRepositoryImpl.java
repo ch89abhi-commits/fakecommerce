@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.example.fakecom.schema.CategorySchema;
 import com.example.fakecom.schema.ProductSchema;
 
 import jakarta.persistence.EntityManager;
@@ -27,23 +26,29 @@ public class CustomProductRepositoryImpl  implements  CustomProductRepository{
     //     return entityManager.createQuery(" SELECT p FROM Product p JOIN p.category c WHERE c.categoryName = :category",ProductSchema.class).setProperty("category",category).getResultList();
 
     // }
+    
+ 
+    // @Override  // jpql query
+    // public List<ProductSchema> findCategoryBasedProduct(String category){
 
-    @Override  // jpql query
-    public List<ProductSchema> findCategoryBasedProduct(String category){
+    //     String name="SELECT p from ProductSchema p JOIN p.category c WHERE c.name= :category";
+    //     TypedQuery<ProductSchema> query=entityManager.createQuery(name,ProductSchema.class);
 
-        return entityManager.createNamedQuery("select p from ProductSchema p join p.category c where c.name= :category", ProductSchema.class).setParameter("category",category).getResultList();
-    }
+    //     query.setParameter("category", category);
+    //     return query.getResultList();
+    //     // return entityManager.createQuery(, ProductSchema.class).setParameter("category",category).getResultList();
+    // }
+ 
 
-/*
 @Override  // sql query
-public List<ProductSchema> findCategoryBasedProduct(String category){
+public  List<ProductSchema> findCategoryBasedProduct(String category){
 
-string sql ="select * from Products inner join Categories on Products.category_id=Categories.id where categories.name= :category"
+String sql ="select p.* from Products p inner join Categories c on p.category_id=c.id where c.name= :category";
     
 return entityManager.createNativeQuery(sql, ProductSchema.class).setParameter("category",category).getResultList();
 }
-*/
 
+ 
 
     
     
