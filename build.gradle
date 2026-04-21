@@ -61,4 +61,8 @@ implementation 'commons-beanutils:commons-beanutils:1.9.4'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
  

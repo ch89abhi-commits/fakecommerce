@@ -13,8 +13,7 @@ import com.example.fakecom.schema.CategorySchema;
 
 public interface CategoryMapper {
 
-    
-    
+
     @Mapping(source="name",target="name")
     CategorySchema DTOtoSchema (CategoryRequest data);
     
@@ -25,4 +24,6 @@ public interface CategoryMapper {
 
     @InheritInverseConfiguration(name="conversionList")
     List<CategoryRequest> listConversion(List<CategorySchema> data);
+
+    
 }
