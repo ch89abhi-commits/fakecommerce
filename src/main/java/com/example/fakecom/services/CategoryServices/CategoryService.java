@@ -6,19 +6,20 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.fakecom.DTOs.RequestDTOs.CategoryRequest;
+import com.example.fakecom.DTOs.ResponseDTOs.CategoryResponse;
 import com.example.fakecom.ObjectMappers.CategoryMapper;
 import com.example.fakecom.repositories.CategoryRepository;
 import com.example.fakecom.schema.CategorySchema;
 import com.example.fakecom.services.CategoryServices.V1_Category.Read_Service;
 
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class CategoryService implements Read_Service {
  
-    public  final CategoryRepository categoryRepository;
-    public final CategoryMapper categoryMapper;
+    private   final CategoryRepository categoryRepository;
+    private  final CategoryMapper categoryMapper;
 
 
 
@@ -31,11 +32,11 @@ public class CategoryService implements Read_Service {
 
 
     @Override
-    public CategoryRequest addingCategory(CategoryRequest data){
+    public CategoryResponse addingCategory(CategoryRequest data){
 
         CategorySchema ct=categoryMapper.DTOtoSchema(data);
         
-        return categoryMapper.SchemaToDTO(
+        return categoryMapper.SchemaToResponse(
                       categoryRepository.save(ct)
         );
 

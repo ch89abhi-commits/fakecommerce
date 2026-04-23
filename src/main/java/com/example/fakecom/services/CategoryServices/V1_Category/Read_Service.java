@@ -3,6 +3,7 @@ package com.example.fakecom.services.CategoryServices.V1_Category;
 import java.util.List;
 
 import com.example.fakecom.DTOs.RequestDTOs.CategoryRequest;
+import com.example.fakecom.DTOs.ResponseDTOs.CategoryResponse;
 import com.example.fakecom.schema.CategorySchema;
 
 public interface Read_Service {
@@ -17,7 +18,7 @@ public interface Read_Service {
 
     // wrting the category directly from the category api not fomr the 
 
-    public CategoryRequest addingCategory(CategoryRequest data);
+    public CategoryResponse addingCategory(CategoryRequest data);
 
     public CategorySchema categoryDelete(Long id);
 
