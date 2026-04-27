@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.fakecom.DTOs.RequestDTOs.CategoryRequest;
 import com.example.fakecom.DTOs.ResponseDTOs.CategoryResponse;
+import com.example.fakecom.Exceptions.NoUserExistException;
 import com.example.fakecom.ObjectMappers.CategoryMapper;
 import com.example.fakecom.repositories.CategoryRepository;
 import com.example.fakecom.schema.CategorySchema;
@@ -48,7 +49,7 @@ public class CategoryService implements Read_Service {
     public CategoryRequest getCategory(Long id){
 
         return categoryMapper.SchemaToDTO(
-                        categoryRepository.findById(id).orElseThrow() 
+                        categoryRepository.findById(id).orElseThrow(()-> new NoUserExistException("no category exist")) 
         )   ;
     }
 
@@ -59,6 +60,7 @@ public class CategoryService implements Read_Service {
         return ct;
 
     }
+
 
 
 }

@@ -48,17 +48,28 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 
 
+
 // for the property utils
 
 implementation 'commons-beanutils:commons-beanutils:1.9.4'
+ 
 
 
-
-	 
-	
-	testImplementation 'org.springframework.boot:spring-boot-starter-flyway-test'
+	// testImplementation 'org.springframework.boot:spring-boot-starter-flyway-test'
+	// testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	// testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+  	testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+	testImplementation 'com.h2database:h2'
+
+	// testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+
+	testImplementation 'org.assertj:assertj-core:3.25.3'// assertions adding
+	// for the tesing only 
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	
 }
 
 tasks.named('test') {
