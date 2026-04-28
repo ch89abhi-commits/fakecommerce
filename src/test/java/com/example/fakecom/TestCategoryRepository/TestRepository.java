@@ -22,7 +22,7 @@ import com.example.fakecom.schema.CategorySchema;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace=AutoConfigureTestDatabase.Replace.ANY)
-@Import(TestJpaConfig.class)
+@Import(TestJpaConfig.class)// importing for the jpa auditing cllases to get my timestamps
 public class TestRepository {
 
     @Autowired
