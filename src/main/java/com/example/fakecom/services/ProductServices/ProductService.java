@@ -2,9 +2,11 @@ package com.example.fakecom.services.ProductServices;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.fakecom.Caches.ProductCache;
 import com.example.fakecom.DTOs.RequestDTOs.CompleteProductRequest;
 import com.example.fakecom.DTOs.RequestDTOs.DetailProductRequest;
 import com.example.fakecom.DTOs.ResponseDTOs.DetailProductResponse;
@@ -31,12 +33,21 @@ public class ProductService implements ReadService ,WriteServices {
     private final ProductMappers productMapper; // make sure that the this field should not be changed based on the different threads
     private final CompleteMapper completeMapper;
     private final CategoryRepository categoryRepository;
+    private final ProductCache productCache;
 
 
 
     @Override
     public ProductSchema getById(Long id){
-        return productRepository.findById(id).orElseThrow(()-> new NoUserExistException("cannot abkle to find"));
+
+        Optional<ProductSchema> cach=productCache.getCache(id);
+        if(cach.isPresent()) return cach.get();
+
+        ProductSchema data= productRepository.findById(id).orElseThrow(()-> new NoUserExistException("cannot abkle to find"));
+
+        productCache.putCache(id, data);
+
+        return data;
     }
 
     @Override

@@ -51,7 +51,7 @@ dependencies {
 
 // for the property utils
 
-implementation 'commons-beanutils:commons-beanutils:1.9.4'
+	implementation 'commons-beanutils:commons-beanutils:1.9.4'
  
 
 
@@ -75,6 +75,12 @@ implementation 'commons-beanutils:commons-beanutils:1.9.4'
     testImplementation "org.testcontainers:junit-jupiter"
 	 testImplementation 'org.springframework.boot:spring-boot-testcontainers'
 	 testRuntimeOnly 'com.mysql:mysql-connector-j'
+
+	  implementation 'redis.clients:jedis:7.2.0'
+	 implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+
+
 
 
 	
