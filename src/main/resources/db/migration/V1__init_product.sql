@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS Products(
     updated_At DATETIME ,
     deleted_At DATETIME ,
     -- category_id BIGINT NOT NULL,  added to the next commit
-    Primary key(id),
+    Primary key(id)
     -- Foreign key(category_id) references Categories(id)
 
 );

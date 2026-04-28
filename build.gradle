@@ -2,7 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '4.0.5'
 	id 'io.spring.dependency-management' version '1.1.7'
-	   id 'org.flywaydb.flyway' version '10.21.0' // just for the flyway repair for the changong pf  the checksum
+	id 'org.flywaydb.flyway' version '10.21.0' // just for the flyway repair for the changong pf  the checksum
 }
 
 group = 'com.example'
@@ -65,9 +65,17 @@ implementation 'commons-beanutils:commons-beanutils:1.9.4'
 	// testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
 
-	testImplementation 'org.assertj:assertj-core:3.25.3'// assertions adding
+	testImplementation 'org.assertj:assertj-core:3.25.3'// assertions adding for the assertthat implementations
 	// for the tesing only 
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// bill of material
+	 testImplementation platform("org.testcontainers:testcontainers-bom:1.19.7") // foe using the test container
+	 // MySQL Testcontainer
+    testImplementation "org.testcontainers:mysql"
+    testImplementation "org.testcontainers:junit-jupiter"
+	 testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+	 testRuntimeOnly 'com.mysql:mysql-connector-j'
+
 
 	
 }
